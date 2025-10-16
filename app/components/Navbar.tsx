@@ -11,6 +11,7 @@ export default function Navbar() {
   const [hoveredTab, setHoveredTab] = useState<string | null>(null);
   const [mounted, setMounted] = useState(false);
   const [isDark, setIsDark] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -49,7 +50,7 @@ export default function Navbar() {
                   onClick={() => setActiveTab('home')}
                   onMouseEnter={() => setHoveredTab('home')}
                   onMouseLeave={() => setHoveredTab(null)}
-                  className={`px-6 py-2 text-sm font-medium transition-all duration-200 relative rounded-full z-10 ${
+                  className={`px-3 sm:px-6 py-2 text-xs sm:text-sm font-medium transition-all duration-200 relative rounded-full z-10 ${
                     activeTab === 'home'
                       ? 'text-white bg-[#55CDFC]'
                       : ''
@@ -58,13 +59,14 @@ export default function Navbar() {
                     color: activeTab === 'home' ? '' : (isDark ? 'rgb(255, 255, 255)' : 'rgb(55, 65, 81)')
                   }}
                 >
-                  TransTalk
+                  <span className="hidden sm:inline">TransTalk</span>
+                  <span className="sm:hidden">TT</span>
                 </button>
                 <button
                   onClick={() => setActiveTab('articles')}
                   onMouseEnter={() => setHoveredTab('articles')}
                   onMouseLeave={() => setHoveredTab(null)}
-                  className={`px-6 py-2 text-sm font-medium transition-all duration-200 relative rounded-full z-10 ${
+                  className={`px-3 sm:px-6 py-2 text-xs sm:text-sm font-medium transition-all duration-200 relative rounded-full z-10 ${
                     activeTab === 'articles'
                       ? 'text-white bg-[#55CDFC]'
                       : ''
@@ -73,7 +75,8 @@ export default function Navbar() {
                     color: activeTab === 'articles' ? '' : (isDark ? 'rgb(255, 255, 255)' : 'rgb(55, 65, 81)')
                   }}
                 >
-                  Articles
+                  <span className="hidden sm:inline">Articles</span>
+                  <span className="sm:hidden">Art</span>
                 </button>
               </div>
             </div>
@@ -81,7 +84,8 @@ export default function Navbar() {
 
           {/* Middle search box */}
           <div className="flex-1 max-w-md">
-            <div className="relative">
+            {/* Desktop search input */}
+            <div className="hidden sm:block relative">
               <input
                 type="text"
                 placeholder="Search..."
@@ -95,9 +99,38 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Right theme toggle */}
-          <div className="absolute right-0 flex items-center">
+          {/* Right theme toggle and mobile search */}
+          <div className="absolute right-0 flex items-center space-x-2">
+            {/* Mobile search button */}
+            <div className="sm:hidden">
+              <button
+                onClick={() => setIsSearchOpen(!isSearchOpen)}
+                className={`p-2 rounded-full transition-colors duration-200 ${isDark ? 'hover:bg-gray-700' : 'hover:bg-gray-200'}`}
+              >
+                <svg className={`h-5 w-5 ${isDark ? 'text-gray-300' : 'text-gray-600'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              </button>
+            </div>
             <ThemeToggle />
+            {/* Mobile search input overlay */}
+            {isSearchOpen && (
+              <div className="sm:hidden absolute top-full right-0 mt-2 w-64 px-4">
+                <div className="relative">
+                  <input
+                    type="text"
+                    placeholder="Search..."
+                    autoFocus
+                    className={`w-full rounded-full px-4 py-2 pl-10 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 ${isDark ? 'bg-gray-800 border-gray-600' : 'bg-gray-100 border-gray-300'}`}
+                  />
+                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <svg className={`h-5 w-5 ${isDark ? 'text-gray-500' : 'text-gray-400'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>

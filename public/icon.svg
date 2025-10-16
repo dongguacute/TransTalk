@@ -1,0 +1,22 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- 羽毛主體 -->
+  <path d="M70 10 C50 15, 30 40, 25 65 C23 75, 30 85, 45 88 C60 90, 70 70, 75 50 C78 35, 80 20, 70 10 Z"
+        fill="url(#featherGradient)" stroke="#ffffff" stroke-width="1.5" />
+  
+  <!-- 羽軸 -->
+  <path d="M45 88 C48 70, 55 45, 70 10"
+        stroke="rgba(255,255,255,0.7)" stroke-width="1.5" fill="none" />
+
+  <!-- 漸變定義：跨性別旗幟配色 -->
+  <defs>
+    <linearGradient id="featherGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5BCEFA"/>   <!-- 淺藍 -->
+      <stop offset="33%" stop-color="#F5A9B8"/>  <!-- 粉紅 -->
+      <stop offset="66%" stop-color="#FFFFFF"/>  <!-- 白 -->
+      <stop offset="100%" stop-color="#F5A9B8"/> <!-- 粉紅 -->
+    </linearGradient>
+  </defs>
+
+  <!-- 羽尖的光點，象徵「思考與啟發」 -->
+  <circle cx="72" cy="12" r="2" fill="#fff" opacity="0.8"/>
+</svg>

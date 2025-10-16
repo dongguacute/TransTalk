@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  title: "TransTalk",
   trailingSlash: true,
   images: {
     unoptimized: true,
