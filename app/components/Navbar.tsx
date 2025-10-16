@@ -31,11 +31,11 @@ export default function Navbar() {
     <nav>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-center h-16 relative">
-          {/* 左邊橢圓形切換器 */}
+          {/* Left oval switcher */}
           <div className="absolute left-0 flex items-center">
             <div className="flex-shrink-0">
               <div className={`backdrop-blur-xl rounded-full p-1 flex items-center border shadow-lg relative ${isDark ? 'bg-gray-700 border-white/20' : 'bg-white/20 border-white/30'}`}>
-                {hoveredTab && (
+                {hoveredTab && hoveredTab !== activeTab && (
                   <div
                     className="absolute inset-1 rounded-full transition-all duration-200"
                     style={{
@@ -73,18 +73,18 @@ export default function Navbar() {
                     color: activeTab === 'articles' ? '' : (isDark ? 'rgb(255, 255, 255)' : 'rgb(55, 65, 81)')
                   }}
                 >
-                  文章列表
+                  Articles
                 </button>
               </div>
             </div>
           </div>
 
-          {/* 中間搜索框 */}
+          {/* Middle search box */}
           <div className="flex-1 max-w-md">
             <div className="relative">
               <input
                 type="text"
-                placeholder="搜索..."
+                placeholder="Search..."
                 className={`w-full rounded-full px-4 py-2 pl-10 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 ${isDark ? 'bg-gray-800 border-gray-600' : 'bg-gray-100 border-gray-300'}`}
               />
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -95,7 +95,7 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* 右邊主題切換 */}
+          {/* Right theme toggle */}
           <div className="absolute right-0 flex items-center">
             <ThemeToggle />
           </div>

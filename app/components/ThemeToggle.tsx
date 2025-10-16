@@ -65,10 +65,10 @@ export default function ThemeToggle() {
 
   const getThemeText = (t: Theme) => {
     switch (t) {
-      case 'system': return '跟隨系統';
-      case 'light': return '淺色';
-      case 'dark': return '深色';
-      default: return '跟隨系統';
+      case 'system': return 'System';
+      case 'light': return 'Light';
+      case 'dark': return 'Dark';
+      default: return 'System';
     }
   };
 
@@ -123,7 +123,7 @@ export default function ThemeToggle() {
 
       {isOpen && (
         <div
-          className="absolute top-full mt-2 w-52 backdrop-blur-2xl border rounded-2xl shadow-2xl overflow-hidden z-50"
+          className="absolute top-full mt-2 min-w-32 backdrop-blur-2xl border rounded-2xl shadow-2xl overflow-hidden z-50"
           style={{
             backgroundColor: isDark ? 'rgb(31, 41, 55)' : 'rgb(243, 244, 246)',
             borderColor: isDark ? 'rgba(255, 255, 255, 0.4)' : 'rgb(209, 213, 219)'
@@ -144,7 +144,7 @@ export default function ThemeToggle() {
             <svg className="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
             </svg>
-            <span>跟隨系統</span>
+            <span>System</span>
           </div>
           <div
             className="px-6 py-4 text-sm font-medium cursor-pointer transition-all duration-200 flex items-center space-x-4 rounded-2xl relative"
@@ -161,7 +161,7 @@ export default function ThemeToggle() {
             <svg className="w-5 h-5 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
             </svg>
-            <span>淺色</span>
+            <span>Light</span>
           </div>
           <div
             className="px-6 py-4 text-sm font-medium cursor-pointer transition-all duration-200 flex items-center space-x-4 rounded-2xl relative"
@@ -178,7 +178,7 @@ export default function ThemeToggle() {
             <svg className="w-5 h-5 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
             </svg>
-            <span>深色</span>
+            <span>Dark</span>
           </div>
         </div>
       )}
